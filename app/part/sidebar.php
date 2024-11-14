@@ -10,14 +10,14 @@ foreach ($pecahjudul as $w) {
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="index.php"><?php echo $judul; ?><sup>2.0</sup></a>
+            <a href="../"><?php echo $judul; ?></a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="index.php"><?php echo $acronym; ?><sup>2.0</sup></a>
+            <a href="../"><?php echo $acronym; ?><sup>2.0</sup></a>
         </div>
 
         <ul class="sidebar-menu">
-            <li <?php echo ($page == "Dashboard") ? "class=active" : ""; ?>><a class="nav-link" href="index.php"><i class="fas fa-th-large"></i><span>Dashboard</span></a></li>
+            <li <?php echo ($page == "Dashboard") ? "class=active" : ""; ?>><a class="nav-link" href="../"><i class="fas fa-th-large"></i><span>Dashboard</span></a></li>
             <li class="menu-header">Menu</li>
 
             <?php if ($_SESSION['level'] == "Administrator") { ?>
