@@ -18,6 +18,49 @@
   ?>
 </head>
 
+<style>
+    .rounded-20 {
+    border-radius: 20px;
+  }
+
+  .welcome-banner {
+    background-color: #e7effd;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    align-items: center;
+  }
+
+  .welcome-banner:hover {
+    transform: scale(1.02);
+  }
+
+  .welcome-image {
+    margin: 0;
+  }
+
+  .welcome-text {
+    font-size: 32px;
+    font-weight: bold;
+    color: #1f6de7;
+    margin: 0;
+  }
+
+  .kamar-text {
+    color: #66788A;
+    margin-top: 10px;
+    font-style: italic;
+  }
+
+  .welcome-subtext {
+    color: #66788A;
+    font-size: 16px;
+    font-style: italic;
+    margin-top: 5px;
+  }
+</style>
+
 <body>
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
@@ -35,6 +78,21 @@
             <h1><?php echo $page; ?></h1>
           </div>
           <div class="section-body">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="welcome-banner alert" role="alert">
+                  <div class="row align-items-center">
+                    <div class="col-md-3 col-12 text-center">
+                      <img src="assets/img/background-welcome.png" alt="Welcome Image" class="img-fluid welcome-image">
+                    </div>
+                    <div class="col-md-8 col-12 text-center text-md-left">
+                      <h1 class="welcome-text">Halaman Riwayat Rekam Detak Jantung, <?php echo strtoupper(ucwords($output['nama_pasien'])); ?></h1>
+                      <p class="welcome-subtext">Smart Health V2</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="row">
               <div class="col-12">
                 <div class="card">
@@ -129,8 +187,9 @@
       <?php include 'part/footer.php'; ?>
     </div>
   </div>
-  <?php include "part/all-js.php"; ?>
-  
+  <?php include "part/all-js.php"; 
+  include "GrafikPasien/Pasien.js";?>
+    
   <style>
     th {
       align-items: center;

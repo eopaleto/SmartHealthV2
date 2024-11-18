@@ -112,6 +112,12 @@
     margin: 0;
   }
 
+  .kamar-text {
+    color: #66788A;
+    margin-top: 10px;
+    font-style: italic;
+  }
+
   .welcome-subtext {
     color: #66788A;
     font-size: 16px;
@@ -488,6 +494,7 @@
               <div class="col-md-8 col-12 text-center text-md-left">
                 <h1 class="welcome-text">Halo <?php echo ucwords($output['nama_pasien']); ?>, Selamat Datang!</h1>
                 <p class="welcome-subtext">Smart Health V2</p>
+                <h5 class="kamar-text">Anda berada di <span class="text-warning">Kamar <?php echo $data_kamar['nama_ruang']; ?> !</span></h5>
               </div>
             </div>
           </div>
@@ -504,7 +511,7 @@
               </div>
               <div class="card-body">
                 <div class="chart-line">
-                      <canvas id="ChartPasien" data-jantung='<?php echo $json_data_jantung; ?>' data-showchart='<?php echo $showChart ? 'true' : 'false'; ?>' width="100" height="42"></canvas>
+                      <canvas id="ChartPasien" data-jantung='<?php echo $json_data_jantung; ?>' data-showchart='<?php echo $showChart ? 'true' : 'false'; ?>' width="100" height="47"></canvas>
                 </div>
                 <div class="mt-4 text-center small">
                   <span class="mr-2">
@@ -514,13 +521,13 @@
                     <i class="fas fa-circle saturasi-oksigen"></i> Saturasi Oksigen
                   </span>
                 </div>
-                <?php if ($data_kamar): ?>
-                  <div class="mt-4 text-center small">
-                    <span class="font-weight-bold">Anda Berada di kamar : 
-                      <strong class="text-warning"><?php echo $data_kamar['nama_ruang']; ?></strong>
-                    </span>
-                  </div>
-                <?php endif; ?>
+                  <!-- <?php if ($data_kamar): ?>
+                    <div class="mt-4 text-center small">
+                      <span class="font-weight-bold">Anda Berada di kamar : 
+                        <strong class="text-warning"><?php echo $data_kamar['nama_ruang']; ?></strong>
+                      </span>
+                    </div>
+                  <?php endif; ?> -->
               </div>
             </div>
           </div>
