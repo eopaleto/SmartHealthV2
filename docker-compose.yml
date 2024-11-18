@@ -33,12 +33,14 @@ services:
     image: mariadb
     container_name: database_medis
     environment:
+      TZ: 'Asia/Jakarta'
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: medis
       MYSQL_USER: root
       MYSQL_PASSWORD: "root"
     volumes:
       - ./mysql:/var/lib/mysql
+      - ./event.cnf:/etc/mysql/conf.d/event.cnf
     networks:
       - medis-network
 
@@ -49,6 +51,7 @@ services:
     ports:
       - "8080:80"
     environment:
+      TZ: Asia/Jakarta
       PMA_HOST: db
       PMA_USER: root
       PMA_PASSWORD: root

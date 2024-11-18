@@ -29,7 +29,7 @@
 
   $nama_ruang_list = "'" . implode("', '", $nama_ruang_array) . "'";
 
-  $query = "SELECT k.nama_ruang, u.nama_pasien 
+  $query = "SELECT k.nama_ruang, k.status_alat, u.nama_pasien 
             FROM kamar k 
             LEFT JOIN users u ON k.id_pasien = u.id 
             WHERE k.nama_ruang IN ($nama_ruang_list)";
@@ -39,14 +39,16 @@
   while ($row = mysqli_fetch_assoc($result)) {
     $index = array_search($row['nama_ruang'], $nama_ruang_array);
     if ($index !== false) {
-      $nama_pasien_kamar[$index] = $row['nama_pasien'] ?? "Tidak Ada Pasien";
+        $nama_pasien_kamar[$index] = $row['nama_pasien'] ?? "Tidak Ada Pasien";
+        $status_alat_kamar[$index] = $row['status_alat'] == 1 ? "Online" : "Offline";
     }
   }
 
   foreach ($nama_ruang_array as $index => $nama_ruang) {
-    if (!isset($nama_pasien_kamar[$index])) {
-      $nama_pasien_kamar[$index] = "Tidak Ada Pasien";
-    }
+      if (!isset($nama_pasien_kamar[$index])) {
+          $nama_pasien_kamar[$index] = "Tidak Ada Pasien";
+          $status_alat_kamar[$index] = "Offline";
+      }
   }
   ?>
 </head>
@@ -206,7 +208,12 @@
                 <div class="mt-4 text-center small">
                   <span class="font-weight-bold">Nama Pasien: 
                     <strong class="<?php echo ($nama_pasien_kamar[0] === "Tidak Ada Pasien") ? 'text-danger' : 'text-warning'; ?>">
-                        <?php echo $nama_pasien_kamar[0]; ?>
+                      <?php echo $nama_pasien_kamar[0]; ?>
+                    </strong>
+                  </span><br>
+                  <span class="font-weight-bold">Status Alat:
+                    <strong class="<?php echo ($status_alat_kamar[0] === "Online") ? 'text-success' : 'text-danger'; ?>">
+                      <?php echo $status_alat_kamar[0]; ?>
                     </strong>
                   </span>
                 </div>
@@ -238,6 +245,11 @@
                         <strong class="<?php echo ($nama_pasien_kamar[1] === "Tidak Ada Pasien") ? 'text-danger' : 'text-warning'; ?>">
                             <?php echo $nama_pasien_kamar[1]; ?>
                         </strong>
+                      </span><br>
+                      <span class="font-weight-bold">Status Alat:
+                        <strong class="<?php echo ($status_alat_kamar[1] === "Online") ? 'text-success' : 'text-danger'; ?>">
+                          <?php echo $status_alat_kamar[1]; ?>
+                        </strong>
                       </span>
                     </div>
                 </div>
@@ -268,6 +280,11 @@
                       <strong class="<?php echo ($nama_pasien_kamar[2] === "Tidak Ada Pasien") ? 'text-danger' : 'text-warning'; ?>">
                           <?php echo $nama_pasien_kamar[2]; ?>
                       </strong>
+                    </span><br>
+                    <span class="font-weight-bold">Status Alat:
+                      <strong class="<?php echo ($status_alat_kamar[2] === "Online") ? 'text-success' : 'text-danger'; ?>">
+                        <?php echo $status_alat_kamar[2]; ?>
+                      </strong>
                     </span>
                   </div>
                 </div>
@@ -297,6 +314,11 @@
                     <span class="font-weight-bold">Nama Pasien: 
                       <strong class="<?php echo ($nama_pasien_kamar[3] === "Tidak Ada Pasien") ? 'text-danger' : 'text-warning'; ?>">
                           <?php echo $nama_pasien_kamar[3]; ?>
+                      </strong>
+                    </span><br>
+                    <span class="font-weight-bold">Status Alat:
+                      <strong class="<?php echo ($status_alat_kamar[3] === "Online") ? 'text-success' : 'text-danger'; ?>">
+                        <?php echo $status_alat_kamar[3]; ?>
                       </strong>
                     </span>
                   </div>
