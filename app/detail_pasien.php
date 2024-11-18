@@ -133,7 +133,19 @@
                                 <td class="text-center"><?php echo tgl_indo($data_jantung['Waktu']); ?></td>
                                 <td class="text-center"><?php echo $data_jantung['DetakJantung']; ?></td>
                                 <td class="text-center"><?php echo $data_jantung['SaturasiOksigen']; ?></td>
-                                <td class="text-center"><?php echo $data_jantung['KondisiJantung']; ?></td>
+                                <td class="<?php 
+                                  if ($data_jantung['KondisiJantung'] == 'SEHAT') {
+                                      echo 'text-center text-success font-weight-bold';
+                                  } elseif ($data_jantung['KondisiJantung'] == 'TIDAK SEHAT') {
+                                      echo 'text-center text-danger font-weight-bold';
+                                  } elseif ($data_jantung['KondisiJantung'] == 'KURANG SEHAT') {
+                                      echo 'text-center text-warning font-weight-bold';
+                                  } elseif ($data_jantung['KondisiJantung'] == 'TIDAK DIKETAHUI') {
+                                      echo 'text-center text-grey font-weight-bold';
+                                  } 
+                                ?>">
+                                    <?php echo $data_jantung['KondisiJantung']; ?>
+                                </td>
                               </tr>
                             <?php } ?>
                           </tbody>
@@ -151,6 +163,6 @@
     </div>
   </div>
   <?php include "part/all-js.php"; ?>
-</body>
 
+</body>
 </html>

@@ -105,7 +105,7 @@ session_start();
                       </div>
 
                       <div class="text-center">
-                        Lupa Password ? <a href="daftar.php">Klik disini</a>
+                        Lupa Password ? <a href="not-found">Klik disini</a>
                       </div>
                     </form>
                   </div>

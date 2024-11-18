@@ -21,7 +21,10 @@ foreach ($nama_ruang as $ruang) {
                 continue;
             }
 
-            $sql_jantung = "SELECT id_pasien, Waktu, DetakJantung, SaturasiOksigen, KondisiJantung FROM db_jantung WHERE id_pasien = ?";
+            $sql_jantung = "SELECT db_jantung.id_pasien, db_jantung.Waktu, db_jantung.DetakJantung, db_jantung.SaturasiOksigen, db_jantung.KondisiJantung, users.nama_pasien 
+                            FROM db_jantung 
+                            INNER JOIN users ON db_jantung.id_pasien = users.id 
+                            WHERE db_jantung.id_pasien = ?";
             $stmt_jantung = $conn->prepare($sql_jantung);
             $stmt_jantung->bind_param("i", $id_pasien);
             $stmt_jantung->execute();
@@ -42,7 +45,6 @@ $conn->close();
 if (empty($data)) {
     echo json_encode(["message" => "No data available."]);
 } else {
-    echo json_encode(value: $data);
+    echo json_encode($data);
 }
-
 ?>

@@ -42,28 +42,30 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         options: {
             responsive: true,
-            interaction: {
-                mode: 'nearest',
-                intersect: false,
-            },
             plugins: {
-                legend: {
-                    display: false,
-                },
                 tooltip: {
+                    interaction: {
+                        mode: 'nearest',
+                        intersect: false,
+                    },
                     callbacks: {
                         label: function (context) {
                             const dataPoint = context.raw;
                             const detakJantung = dataPoint.detakJantung;
                             const saturasiOksigen = dataPoint.saturasiOksigen;
                             const idPasien = dataPoint.id_pasien;
+                            const namaPasien = dataPoint.nama_pasien;
                             return [
+                                `Nama Pasien: ${namaPasien}`,
                                 `ID Pasien: ${idPasien}`,
                                 `Detak Jantung: ${detakJantung} Bpm`,
                                 `Saturasi Oksigen: ${saturasiOksigen} %`
                             ];
                         }
                     }
+                },
+                legend: {
+                    display: false,
                 }
             },
             scales: {
@@ -121,10 +123,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 x: item.Waktu,
                 detakJantung: item.DetakJantung,
                 saturasiOksigen: item.SaturasiOksigen,
-                id_pasien: item.id_pasien
+                id_pasien: item.id_pasien,
+                nama_pasien: item.nama_pasien
             };
 
-            if (selectedRoom === 'all' || selectedRoom == getRoomIndex(item.nama_ruang)) {
+            if (selectedRoom === 'all' || selectedRoom === getRoomIndex(item.nama_ruang)) {
                 if (!waktu.includes(item.Waktu)) {
                     waktu.push(item.Waktu);
                 }
@@ -159,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'Mawar': return '2';
             case 'Anggrek': return '3';
             case 'Copere': return '4';
-            default: return null;
+            default: return 'unknown';
         }
     }
 
