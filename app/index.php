@@ -102,8 +102,7 @@
   }
 
   .welcome-image {
-    margin-left: 30px;
-    margin-bottom: 10px;
+    margin: 0;
   }
 
   .welcome-text {
@@ -116,6 +115,7 @@
   .welcome-subtext {
     color: #66788A;
     font-size: 16px;
+    font-style: italic;
     margin: 0;
   }
 </style>
@@ -186,16 +186,16 @@
           </div>
         
         <div class="row">
-        <!-- Grafik Kamar 1 -->
-          <div class="col-xl-3 col-lg-2">
+          <!-- Grafik Kamar 1 -->
+          <div class="col-xl-3 col-lg-4 col-md-6 col-12">
             <div class="card shadow mb-4 rounded-20">
               <div class="card-header py-3 d-flex justify-content-between align-items-center">
                 <h6 class="m-0 font-weight-bold text-primary">Grafik Kamar Melati</h6>
-                  <?php include "part/filter_kamar1.php"; ?>
+                <?php include "part/filter_kamar1.php"; ?>
               </div>
               <div class="card-body">
-                <div class="chart-bar">
-                      <canvas id="ChartPasien1" width="200" height="200"></canvas>
+                <div class="chart-bar position-relative" style="width: 100%; height: 0; padding-bottom: 100%;">
+                  <canvas id="ChartPasien1" width="100%" height="100%"></canvas>
                 </div>
                 <div class="mt-4 text-center small">
                   <span class="mr-2">
@@ -222,7 +222,7 @@
           </div>
 
           <!-- Grafik Kamar 2 -->
-          <div class="col-xl-3 col-lg-2">
+          <div class="col-xl-3 col-lg-4 col-md-6 col-12">
             <div class="card shadow mb-4 rounded-20">
                 <div class="card-header py-3 d-flex justify-content-between align-items-center">
                     <h6 class="m-0 font-weight-bold text-primary">Grafik Kamar Mawar</h6>
@@ -257,7 +257,7 @@
         </div>
 
           <!-- Grafik Kamar 3 -->
-          <div class="col-xl-3 col-lg-2">
+          <div class="col-xl-3 col-lg-4 col-md-6 col-12">
               <div class="card shadow mb-4 rounded-20">
                 <div class="card-header py-3 d-flex justify-content-between align-items-center">
                   <h6 class="m-0 font-weight-bold text-primary">Grafik Kamar Anggrek</h6>
@@ -292,7 +292,7 @@
             </div>
 
           <!-- Grafik Kamar 4 -->
-          <div class="col-xl-3 col-lg-2">
+          <div class="col-xl-3 col-lg-4 col-md-6 col-12">
               <div class="card shadow mb-4 rounded-20">
                 <div class="card-header py-3 d-flex justify-content-between align-items-center">
                   <h6 class="m-0 font-weight-bold text-primary">Grafik Kamar Copere</h6>
@@ -327,7 +327,7 @@
             </div>
           
           <!-- Grafik Kondisi Kesehatan Kamar 1 -->
-          <div class="col-xl-3 col-lg-2">
+          <div class="col-xl-3 col-lg-4 col-md-6 col-12">
               <div class="card shadow mb-4 rounded-20">
                 <div class="card-header py-3 d-flex justify-content-between align-items-center">
                   <h6 class="m-0 font-weight-bold text-primary">Grafik Kondisi Kesehatan Kamar 1</h6>
@@ -352,7 +352,7 @@
           </div>
 
           <!-- Grafik Sehat Kamar 2 -->
-          <div class="col-xl-3 col-lg-2">
+          <div class="col-xl-3 col-lg-4 col-md-6 col-12">
               <div class="card shadow mb-4 rounded-20">
                 <div class="card-header py-3 d-flex justify-content-between align-items-center">
                   <h6 class="m-0 font-weight-bold text-primary">Grafik Kondisi Kesehatan Kamar 2</h6>
@@ -377,7 +377,7 @@
           </div>
 
           <!-- Grafik Sehat Kamar 3 -->
-          <div class="col-xl-3 col-lg-2">
+          <div class="col-xl-3 col-lg-4 col-md-6 col-12">
               <div class="card shadow mb-4 rounded-20">
                 <div class="card-header py-3 d-flex justify-content-between align-items-center">
                   <h6 class="m-0 font-weight-bold text-primary">Grafik Kondisi Kesehatan Kamar 3</h6>
@@ -402,7 +402,7 @@
           </div>
 
           <!-- Grafik Sehat Kamar 4 -->
-          <div class="col-xl-3 col-lg-2">
+          <div class="col-xl-3 col-lg-4 col-md-6 col-12">
               <div class="card shadow mb-4 rounded-20">
                 <div class="card-header py-3 d-flex justify-content-between align-items-center">
                   <h6 class="m-0 font-weight-bold text-primary">Grafik Kondisi Kesehatan Kamar 4</h6>
@@ -482,10 +482,12 @@
         <div class="col-lg-12">
           <div class="welcome-banner alert" role="alert">
             <div class="row align-items-center">
-                <img src="assets/img/background-welcome.png" alt="Welcome Image" width="250" class="img-fluid welcome-image">
-              <div class="col-md-8 col-sm-12 text-center text-md-left">
-                <h1 class="welcome-text">Halo <?php echo ucwords($output['nama_pasien']); ?></>, Selamat Datang!</h1>
-                <p class="welcome-subtext">Smart Health v2</p>
+              <div class="col-md-3 col-12 text-center">
+                <img src="assets/img/background-welcome.png" alt="Welcome Image" class="img-fluid welcome-image">
+              </div>
+              <div class="col-md-8 col-12 text-center text-md-left">
+                <h1 class="welcome-text">Halo <?php echo ucwords($output['nama_pasien']); ?>, Selamat Datang!</h1>
+                <p class="welcome-subtext">Smart Health V2</p>
               </div>
             </div>
           </div>
@@ -494,7 +496,7 @@
 
       <!-- Grafik Pasien -->
       <div class="row">
-        <div class="col-xl-8 col-lg-2">
+        <div class="col-xl-8 col-lg-6 col-md-12 col-12">
             <div class="card shadow mb-4 rounded-20">
               <div class="card-header py-3 d-flex justify-content-between align-items-center">
                 <h6 class="m-0 font-weight-bold text-primary">Grafik Detak Jantung Pasien</h6>
@@ -524,14 +526,14 @@
           </div>
 
           <!-- Grafik Sehat Pasien -->
-          <div class="col-xl-4 col-lg-3">
+          <div class="col-xl-4 col-lg-6 col-md-12 col-12">
             <div class="card shadow mb-4 rounded-20">
               <div class="card-header py-3 d-flex justify-content-between align-items-center">
                 <h6 class="m-0 font-weight-bold text-primary">Kondisi Jantung Pasien</h6>
               </div>
               <div class="card-body">
                 <div class="chart-pie">
-                      <canvas id="ChartPiePasien" width="100" height="50"></canvas>
+                      <canvas id="ChartPiePasien" width="100" height="40"></canvas>
                 </div>
                 <div class="mt-4 text-center small">
                   <span class="mr-2">
