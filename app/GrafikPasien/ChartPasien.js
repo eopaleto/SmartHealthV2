@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const pieChart = new Chart(ctxPie, {
             type: 'doughnut',
             data: {
-                labels: ['Sehat', 'Tidak Sehat', 'Kurang Sehat'],
+                labels: ['Normal', 'Tidak Normal', 'Kurang Normal'],
                 datasets: [{
                     data: [0, 0, 0, 0],
                     backgroundColor: ['lightgreen', 'lightcoral', '#FFB347', 'lightgrey']
@@ -122,12 +122,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
             e.target.classList.add('active');
 
             selectedInterval = e.target.getAttribute('data-interval');
-            fetchData(); // Panggil fungsi fetchData
+            fetchData();
         }
     });
 
     function fetchData() {
-        for (let i = 1; i <= 4; i++) { // Sesuaikan jumlah kamar
+        for (let i = 1; i <= 4; i++) {
             fetch(`GrafikPasien/DataKamar${i}.php?interval=${selectedInterval}`)
                 .then(response => response.json())
                 .then(data => {
@@ -200,9 +200,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }    
     
     function updatePieChart(chart, data) {
-        let sehatCount = 0;
-        let tidakSehatCount = 0;
-        let kurangSehatCount = 0;
+        let normalCount = 0;
+        let tidakNormalCount = 0;
+        let kurangNormalCount = 0;
 
         let filteredData;
 
@@ -218,22 +218,22 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         filteredData.forEach(item => {
             if (item.KondisiJantung) {
-                if (item.KondisiJantung === 'SEHAT') {
-                    sehatCount++;
-                } else if (item.KondisiJantung === 'TIDAK SEHAT') {
-                    tidakSehatCount++;
-                } else if (item.KondisiJantung === 'KURANG SEHAT') {
-                    kurangSehatCount++;
+                if (item.KondisiJantung === 'NORMAL') {
+                    normalCount++;
+                } else if (item.KondisiJantung === 'TIDAK NORMAL') {
+                    tidakNormalCount++;
+                } else if (item.KondisiJantung === 'KURANG NORMAL') {
+                    kurangNormalCount++;
                 }
             }
         });
 
-        const total = sehatCount + tidakSehatCount + kurangSehatCount; 
-        const sehatPercentage = total > 0 ? (sehatCount / total) * 100 : 0;
-        const tidakSehatPercentage = total > 0 ? (tidakSehatCount / total) * 100 : 0;
-        const kurangSehatPercentage = total > 0 ? (kurangSehatCount / total) * 100 : 0;
+        const total = normalCount + tidakNormalCount + kurangNormalCount; 
+        const normalPercentage = total > 0 ? (normalCount / total) * 100 : 0;
+        const tidakNormalPercentage = total > 0 ? (tidakNormalCount / total) * 100 : 0;
+        const kurangNormalPercentage = total > 0 ? (kurangNormalCount / total) * 100 : 0;
 
-        chart.data.datasets[0].data = [sehatPercentage, tidakSehatPercentage, kurangSehatPercentage];
+        chart.data.datasets[0].data = [normalPercentage, tidakNormalPercentage, kurangNormalPercentage];
         chart.update();
     }    
 

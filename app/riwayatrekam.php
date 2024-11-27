@@ -22,7 +22,7 @@
     .rounded-20 {
     border-radius: 20px;
   }
-
+  
   .welcome-banner {
     background-color: #e7effd;
     border-radius: 10px;
@@ -187,8 +187,7 @@
       <?php include 'part/footer.php'; ?>
     </div>
   </div>
-  <?php include "part/all-js.php"; 
-  include "GrafikPasien/Pasien.js";?>
+  <?php include "part/all-js.php";?>
     
   <style>
     th {

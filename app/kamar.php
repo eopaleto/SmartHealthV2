@@ -87,7 +87,7 @@
 			$nama_ruang = $nama_ruang_row['nama_ruang'];
 	
 			$update_ruang = mysqli_query($conn, "UPDATE kamar SET id_pasien='$id_pasien', tgl_masuk=NOW(), jam_masuk=NOW(), status='1' WHERE id_kamar='$id_ruang'");
-			$insert_riwayat = mysqli_query($conn, "INSERT INTO riwayat_kamar (id_pasien, nama_ruangan, tgl_masuk) VALUES ('$id_pasien', '$nama_ruang', NOW())");
+			$insert_riwayat = mysqli_query($conn, "INSERT INTO riwayat_kamar (id_pasien, nama_ruangan, tgl_masuk, tgl_keluar) VALUES ('$id_pasien', '$nama_ruang', NOW(), NULL)");
 		
 			if ($update_ruang && $insert_riwayat) {
 				echo '<script>

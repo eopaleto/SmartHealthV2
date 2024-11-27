@@ -64,10 +64,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const chartStatusKesehatan = new Chart(ctxPie, {
             type: 'doughnut',
             data: {
-                labels: ['Sehat', 'Tidak Sehat', 'Kurang Sehat'],
+                labels: ['Normal', 'Tidak Normal', 'Kurang Normal'],
                 datasets: [{
-                    data: [0, 0, 0, 0],
-                    backgroundColor: ['lightgreen', 'lightcoral', '#FFB347', 'lightgrey']
+                    data: [0, 0, 0],
+                    backgroundColor: ['lightgreen', 'lightcoral', '#FFB347']
                 }]
             },
             options: {
@@ -160,26 +160,26 @@ document.addEventListener('DOMContentLoaded', (event) => {
         function updatePieChart(data) {
             let filteredData = filterDataByInterval(data);
 
-            let sehatCount = 0;
-            let tidakSehatCount = 0;
-            let kurangSehatCount = 0;
+            let normalCount = 0;
+            let tidakNormalCount = 0;
+            let kurangNormalCount = 0;
 
             filteredData.forEach(item => {
-                if (item.KondisiJantung === 'SEHAT') {
-                    sehatCount++;
-                } else if (item.KondisiJantung === 'TIDAK SEHAT') {
-                    tidakSehatCount++;
-                } else if (item.KondisiJantung === 'KURANG SEHAT') {
-                    kurangSehatCount++;
+                if (item.KondisiJantung === 'NORMAL') {
+                    normalCount++;
+                } else if (item.KondisiJantung === 'TIDAK NORMAL') {
+                    tidakNormalCount++;
+                } else if (item.KondisiJantung === 'KURANG NORMAL') {
+                    kurangNormalCount++;
                 }
             });
 
-            const total = sehatCount + tidakSehatCount + kurangSehatCount;
-            const sehatPercentage = total > 0 ? (sehatCount / total) * 100 : 0;
-            const tidakSehatPercentage = total > 0 ? (tidakSehatCount / total) * 100 : 0;
-            const kurangSehatPercentage = total > 0 ? (kurangSehatCount / total) * 100 : 0;
+            const total = normalCount + tidakNormalCount + kurangNormalCount;
+            const normalPercentage = total > 0 ? (normalCount / total) * 100 : 0;
+            const tidakNormalPercentage = total > 0 ? (tidakNormalCount / total) * 100 : 0;
+            const kurangNormalPercentage = total > 0 ? (kurangNormalCount / total) * 100 : 0;
 
-            chartStatusKesehatan.data.datasets[0].data = [sehatPercentage, tidakSehatPercentage, kurangSehatPercentage];
+            chartStatusKesehatan.data.datasets[0].data = [normalPercentage, tidakNormalPercentage, kurangNormalPercentage];
             chartStatusKesehatan.update();
         }
 

@@ -64,15 +64,15 @@
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   } */
 
-  .sehat {
+  .normal {
     color: lightgreen;
   }
 
-  .tidak-sehat {
+  .tidak-normal {
     color: lightcoral;
   }
 
-  .kurang-sehat {
+  .kurang-normal {
     color: #ffb347;
   }
 
@@ -115,7 +115,6 @@
   .kamar-text {
     color: #66788A;
     margin-top: 10px;
-    font-style: italic;
   }
 
   .welcome-subtext {
@@ -344,13 +343,13 @@
                   </div>
                   <div class="mt-4 text-center small">
                     <span class="mr-2">
-                      <i class="fas fa-circle sehat"></i> Sehat
+                      <i class="fas fa-circle normal"></i> Normal
                     </span>
                     <span class="mr-2">
-                      <i class="fas fa-circle kurang-sehat"></i> Kurang Sehat
+                      <i class="fas fa-circle kurang-normal"></i> Kurang Normal
                     </span>
                     <span class="mr-2">
-                      <i class="fas fa-circle tidak-sehat"></i> Tidak Sehat
+                      <i class="fas fa-circle tidak-normal"></i> Tidak Normal
                     </span>
                   </div>
                 </div>
@@ -369,13 +368,13 @@
                   </div>
                   <div class="mt-4 text-center small">
                     <span class="mr-2">
-                      <i class="fas fa-circle sehat"></i> Sehat
+                      <i class="fas fa-circle normal"></i> Normal
                     </span>
                     <span class="mr-2">
-                      <i class="fas fa-circle kurang-sehat"></i> Kurang Sehat
+                      <i class="fas fa-circle kurang-normal"></i> Kurang Normal
                     </span>
                     <span class="mr-2">
-                      <i class="fas fa-circle tidak-sehat"></i> Tidak Sehat
+                      <i class="fas fa-circle tidak-normal"></i> Tidak Normal
                     </span>
                   </div>
                 </div>
@@ -394,13 +393,13 @@
                   </div>
                   <div class="mt-4 text-center small">
                     <span class="mr-2">
-                      <i class="fas fa-circle sehat"></i> Sehat
+                      <i class="fas fa-circle normal"></i> Normal
                     </span>
                     <span class="mr-2">
-                      <i class="fas fa-circle kurang-sehat"></i> Kurang Sehat
+                      <i class="fas fa-circle kurang-normal"></i> Kurang Normal
                     </span>
                     <span class="mr-2">
-                      <i class="fas fa-circle tidak-sehat"></i> Tidak Sehat
+                      <i class="fas fa-circle tidak-normal"></i> Tidak Normal
                     </span>
                   </div>
                 </div>
@@ -419,13 +418,13 @@
                   </div>
                   <div class="mt-4 text-center small">
                     <span class="mr-2">
-                      <i class="fas fa-circle sehat"></i> Sehat
+                      <i class="fas fa-circle normal"></i> Normal
                     </span>
                     <span class="mr-2">
-                      <i class="fas fa-circle kurang-sehat"></i> Kurang Sehat
+                      <i class="fas fa-circle kurang-normal"></i> Kurang Normal
                     </span>
                     <span class="mr-2">
-                      <i class="fas fa-circle tidak-sehat"></i> Tidak Sehat
+                      <i class="fas fa-circle tidak-normal"></i> Tidak Normal
                     </span>
                   </div>
                 </div>
@@ -445,16 +444,16 @@
                       </div>
                       <div class="mt-4 text-center small">
                           <span class="mr-2">
-                              <i class="fas fa-circle text-primary"></i> Kamar 1
+                              <i class="fas fa-circle" style="color: lightblue;"></i> Kamar 1
                           </span>
                           <span class="mr-2">
-                              <i class="fas fa-circle text-success"></i> Kamar 2
+                              <i class="fas fa-circle" style="color: lightgreen;"></i> Kamar 2
                           </span>
                           <span class="mr-2">
-                              <i class="fas fa-circle text-danger"></i> Kamar 3
+                              <i class="fas fa-circle" style="color: lightcoral;"></i> Kamar 3
                           </span>
                           <span class="mr-2">
-                              <i class="fas fa-circle text-black"></i> Kamar 4
+                              <i class="fas fa-circle" style="color: lightsalmon;"></i> Kamar 4
                           </span>
                       </div>
                   </div>
@@ -494,7 +493,13 @@
               <div class="col-md-8 col-12 text-center text-md-left">
                 <h1 class="welcome-text">Halo <?php echo ucwords($output['nama_pasien']); ?>, Selamat Datang!</h1>
                 <p class="welcome-subtext">Smart Health V2</p>
-                <h5 class="kamar-text">Anda berada di <span class="text-warning">Kamar <?php echo $data_kamar['nama_ruang']; ?> !</span></h5>
+                <h5 class="kamar-text">
+                  <?php if (isset($data_kamar['nama_ruang']) && !empty($data_kamar['nama_ruang'])): ?>
+                      Anda berada di <span class="text-warning">Kamar <?php echo $data_kamar['nama_ruang']; ?>  !</span>
+                  <?php else: ?>
+                      <span class="text-danger">Anda Tidak Berada didalam Kamar !</span>
+                  <?php endif; ?>
+              </h5>
               </div>
             </div>
           </div>
@@ -544,13 +549,13 @@
                 </div>
                 <div class="mt-4 text-center small">
                   <span class="mr-2">
-                    <i class="fas fa-circle sehat"></i> Sehat
+                    <i class="fas fa-circle normal"></i> Normal
                   </span>
                   <span class="mr-2">
-                    <i class="fas fa-circle kurang-sehat"></i> Kurang Sehat
+                    <i class="fas fa-circle kurang-normal"></i> Kurang Normal
                   </span>
                   <span class="mr-2">
-                    <i class="fas fa-circle tidak-sehat"></i> Tidak Sehat
+                    <i class="fas fa-circle tidak-normal"></i> Tidak Normal
                   </span>
                 </div>
               </div>

@@ -26,7 +26,7 @@
 
   if (isset($_POST['jalan1'])) {
     if ($cekrow == 0) {
-      mysqli_query($conn, "INSERT INTO users (nama_pasien, nik, tgl_lahir, umur, jenis_kelamin, tinggi_badan, berat_badan) VALUES ('$nama', '0', '0', '0', '0','0', '0')");
+      mysqli_query($conn, "INSERT INTO users (nama_pasien, nik, tgl_lahir, umur, alamat, jenis_kelamin, tinggi_badan, berat_badan) VALUES ('$nama', '0', '0', '0', '0','0', '0', '0')");
       echo '<script> location.reload(); </script>';
     } else {
       echo '<script>
