@@ -10,6 +10,10 @@ services:
       - medis-network
     depends_on:
       - db
+    deploy:
+      replicas: 2 # Menjalankan 2 instance app
+      restart_policy:
+        condition: on-failure
 
   cloudflare-tunnel:
     image: cloudflare/cloudflared:latest
@@ -28,6 +32,8 @@ services:
       - ./default.conf:/etc/nginx/conf.d/default.conf
     networks:
       - medis-network
+    depends_on:
+      - app
 
   db:
     image: mariadb

@@ -117,9 +117,11 @@
                                     <i class="fas fa-pencil-alt"></i>
                                   </a>
                                 </span>
-                                <a class="btn btn-danger btn-action mr-1" data-toggle="tooltip" title="Hapus"
-                                  data-confirm="Hapus Data|Apakah anda ingin menghapus data ini?"
-                                  data-confirm-yes="window.location.href = 'auth/delete.php?type=users&id=<?php echo $row['id']; ?>'">
+                                <a href="auth/delete.php?type=users&id=<?php echo $row['id']; ?>" 
+                                  class="btn btn-danger btn-action mr-1 delete-btn" 
+                                  data-toggle="tooltip" 
+                                  title="Hapus" 
+                                  data-confirm="Hapus Data|Apakah anda ingin menghapus data ini?">
                                   <i class="fas fa-trash"></i>
                                 </a>
                                 <input type="hidden" name="id" value="<?php echo $row['nama_pasien']; ?>">
