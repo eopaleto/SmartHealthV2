@@ -178,7 +178,7 @@
                         <div class="form-group row">
                           <label class="col-md-4 text-md-right text-left">Nik / No.KTP</label>
                           <div class="col-lg-4 col-md-6">
-                            <input type="number" class="form-control" name="nik" required="" value="<?php echo $tokne['nik']; ?>">
+                            <input type="number" class="form-control" name="nik" required="" placeholder="Masukan NIK / No.KTP Pasien">
                           </div>
                         </div>
                         <div class="form-group row">
@@ -194,7 +194,7 @@
                         <div class="form-group row">
                           <label class="col-md-4 text-md-right text-left col-form-label">Tinggi Badan</label>
                           <div class="input-group col-sm-6 col-lg-4">
-                            <input type="number" class="form-control" name="tinggi" required="" value="<?php echo $tokne['tinggi_badan']; ?>">
+                            <input type="number" class="form-control" name="tinggi" required="" placeholder="Masukan Tinggi Badan Pasien">
                             <div class="invalid-feedback">
                               Mohon data diisi!
                             </div>
@@ -210,6 +210,7 @@
                           <label class="col-md-4 text-md-right text-left col-form-label">Jenis Kelamin</label>
                           <div class="col-sm-6 col-lg-4">
                             <select class="form-control" name="jenis_kelamin" required="">
+                              <option value="">-- Pilih Jenis Kelamin --</option>
                               <option value="Laki-Laki" <?php echo ($tokne['jenis_kelamin'] == 'Laki-Laki') ? 'selected' : ''; ?>>Laki-Laki</option>
                               <option value="Perempuan" <?php echo ($tokne['jenis_kelamin'] == 'Perempuan') ? 'selected' : ''; ?>>Perempuan</option>
                             </select>
@@ -222,7 +223,7 @@
                         <div class="form-group row">
                           <label class="col-md-4 text-md-right text-left col-form-label">Berat Badan</label>
                           <div class="input-group col-sm-6 col-lg-4">
-                            <input type="number" class="form-control" name="berat" required="" value="<?php echo $tokne['berat_badan']; ?>">
+                            <input type="number" class="form-control" name="berat" required="" placeholder="Masukan Berat Badan Pasien">
                             <div class="invalid-feedback">
                               Mohon data diisi!
                             </div>
@@ -236,7 +237,7 @@
                         <div class="form-group row">
                           <label class="col-md-4 text-md-right text-left">Alamat</label>
                           <div class="col-lg-4 col-md-6">
-                            <textarea type="number" class="form-control" name="alamat" required=""><?php echo $tokne['alamat']; ?></textarea>
+                            <textarea type="number" class="form-control" name="alamat" required="" placeholder="Masukan Alamat Lengkap Pasien"></textarea>
                             <div class="invalid-feedback">
                               Mohon data diisi!
                             </div>

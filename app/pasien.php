@@ -10,6 +10,7 @@
 <html lang="en">
 
 <head>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <?php
   $page = "Data Pasien";
   include 'auth/connect.php';
@@ -119,9 +120,8 @@
                                 </span>
                                 <a href="auth/delete.php?type=users&id=<?php echo $row['id']; ?>" 
                                   class="btn btn-danger btn-action mr-1 delete-btn" 
-                                  data-toggle="tooltip" 
-                                  title="Hapus" 
-                                  data-confirm="Hapus Data|Apakah anda ingin menghapus data ini?">
+                                  data-id="<?php echo $row['id']; ?>" 
+                                  title="Hapus">
                                   <i class="fas fa-trash"></i>
                                 </a>
                                 <input type="hidden" name="id" value="<?php echo $row['nama_pasien']; ?>">
@@ -229,6 +229,32 @@
     </div>
   </div>
   <?php include "part/all-js.php"; ?>
+
+  <script>
+  document.addEventListener("click", function (event) {
+      let button = event.target.closest(".delete-btn");
+
+      if (button) {
+          event.preventDefault();
+          let deleteUrl = button.getAttribute("href");
+
+          Swal.fire({
+              title: "Hapus Data?",
+              text: "Apakah Anda yakin ingin menghapus data ini?",
+              icon: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#d33",
+              cancelButtonColor: "#3085d6",
+              confirmButtonText: "Ya, Hapus!",
+              cancelButtonText: "Batal"
+          }).then((result) => {
+              if (result.isConfirmed) {
+                  window.location.href = deleteUrl;
+              }
+          });
+      }
+  });
+</script>
 
   <script>
     $('#editPasien').on('show.bs.modal', function(event) {

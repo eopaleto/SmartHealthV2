@@ -118,6 +118,7 @@
                   <label for="csvPasien">Pilih Pasien</label>
                   <select name="id_pasien" id="csvPasien" class="form-control selectric" required>
                     <option value="">Pilih Pasien</option>
+                    <option value="ALL">Seluruh Pasien</option>
                     <?php
                     $result_pasien = mysqli_query($conn, "SELECT id, nama_pasien FROM users");
                     while ($row_pasien = mysqli_fetch_array($result_pasien)) {

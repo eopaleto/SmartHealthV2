@@ -14,7 +14,8 @@
           swal({
               title: "Sukses",
               text: "Hapus data berhasil!",
-              type: "success"
+              type: "success",
+              timer: 1000,
           }, function() {
               <?php
                 if ($tipe == "kamar") {

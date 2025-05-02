@@ -134,11 +134,11 @@
                                 <td class="text-center"><?php echo $data_jantung['DetakJantung']; ?></td>
                                 <td class="text-center"><?php echo $data_jantung['SaturasiOksigen']; ?></td>
                                 <td class="<?php 
-                                  if ($data_jantung['KondisiJantung'] == 'SEHAT') {
+                                  if ($data_jantung['KondisiJantung'] == 'NORMAL') {
                                       echo 'text-center text-success font-weight-bold';
-                                  } elseif ($data_jantung['KondisiJantung'] == 'TIDAK SEHAT') {
+                                  } elseif ($data_jantung['KondisiJantung'] == 'TIDAK NORMAL') {
                                       echo 'text-center text-danger font-weight-bold';
-                                  } elseif ($data_jantung['KondisiJantung'] == 'KURANG SEHAT') {
+                                  } elseif ($data_jantung['KondisiJantung'] == 'KURANG NORMAL') {
                                       echo 'text-center text-warning font-weight-bold';
                                   } elseif ($data_jantung['KondisiJantung'] == 'TIDAK DIKETAHUI') {
                                       echo 'text-center text-grey font-weight-bold';

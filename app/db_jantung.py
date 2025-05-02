@@ -10,10 +10,12 @@ def generate_heart_data():
 def connect_to_db():
     try:
         return mysql.connector.connect(
-            host="localhost",
-            user="root",      
-            password="",      
-            database="medis"
+    host="localhost",  # atau "db" jika di dalam docker network
+    user="root",
+    password="root",
+    database="medis",
+    charset='utf8mb4',
+    collation='utf8mb4_general_ci'
         )
     except mysql.connector.Error as err:
         print(f"Error connecting to database: {err}")
@@ -30,8 +32,8 @@ def send_data_to_db(cursor, id_pasien, id_jantung, DetakJantung, SaturasiOksigen
 def main():
     db = connect_to_db()
     cursor = db.cursor()
-    id_pasien = 1
-    id_jantung = 5
+    id_pasien = 96
+    id_jantung = 11
     try:
         while True:
             DetakJantung, SaturasiOksigen = generate_heart_data()

@@ -6,17 +6,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $start_date = $_POST['start_date'];
     $end_date = $_POST['end_date'];
 
-    // Format the date for file name
+    // Format the date for the file name
     $formatted_start = date('Ymd', strtotime($start_date));
     $formatted_end = date('Ymd', strtotime($end_date));
-    $file_name = "Rekam_Detak_Jantung_{$formatted_start} - {$formatted_end}.csv";
 
-    // Query to get the selected patient's data between the selected dates
-    $query = "SELECT db_jantung.*, users.nama_pasien 
-              FROM db_jantung 
-              JOIN users ON db_jantung.id_pasien = users.id
-              WHERE db_jantung.id_pasien = '$id_pasien' 
-              AND db_jantung.Waktu BETWEEN '$start_date 00:00:00' AND '$end_date 23:59:59'";
+    // Tentukan nama file berdasarkan pilihan pasien
+    if ($id_pasien == "ALL") {
+        $file_name = "Rekam_Detak_Jantung_Semua_Pasien_{$formatted_start}_{$formatted_end}.csv";
+        $query = "SELECT db_jantung.*, users.nama_pasien 
+                  FROM db_jantung 
+                  JOIN users ON db_jantung.id_pasien = users.id
+                  WHERE db_jantung.Waktu BETWEEN '$start_date 00:00:00' AND '$end_date 23:59:59'";
+    } else {
+        $file_name = "Rekam_Detak_Jantung_{$formatted_start}_{$formatted_end}.csv";
+        $query = "SELECT db_jantung.*, users.nama_pasien 
+                  FROM db_jantung 
+                  JOIN users ON db_jantung.id_pasien = users.id
+                  WHERE db_jantung.id_pasien = '$id_pasien' 
+                  AND db_jantung.Waktu BETWEEN '$start_date 00:00:00' AND '$end_date 23:59:59'";
+    }
 
     $result = mysqli_query($conn, $query);
 
