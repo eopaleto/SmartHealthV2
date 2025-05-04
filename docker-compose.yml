@@ -1,9 +1,10 @@
 services:
   app:
+    container_name: node1
     build:
       context: .
     ports:
-      - "80" 
+      - "8081:80" 
     volumes:
       - ./app:/var/www/html
     networks:
@@ -11,6 +12,44 @@ services:
     depends_on:
       - db
 
+  app2:
+    container_name: node2
+    build:
+      context: .
+    ports:
+      - "8082:80" 
+    volumes:
+      - ./app:/var/www/html
+    networks:
+      - medis-network
+    depends_on:
+      - db
+
+  app3:
+    container_name: node3
+    build:
+      context: .
+    ports:
+      - "8083:80" 
+    volumes:
+      - ./app:/var/www/html
+    networks:
+      - medis-network
+    depends_on:
+      - db
+
+  app4:
+    container_name: node4
+    build:
+      context: .
+    ports:
+      - "8084:80" 
+    volumes:
+      - ./app:/var/www/html
+    networks:
+      - medis-network
+    depends_on:
+      - db
 
   cloudflare-tunnel:
     image: cloudflare/cloudflared:latest
