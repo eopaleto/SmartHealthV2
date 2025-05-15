@@ -1,8 +1,8 @@
 TYPE=TRIGGERS
-triggers='CREATE DEFINER=`root`@`%` TRIGGER `generate_random_password` BEFORE INSERT ON `users` FOR EACH ROW BEGIN\n    IF NEW.password IS NULL OR NEW.password = \'\' THEN\n        SET NEW.password = SUBSTRING(MD5(RAND()), 1, 8);\n    END IF;\nEND' 'CREATE DEFINER=`root`@`%` TRIGGER `update_umur_before_update` BEFORE UPDATE ON `users` FOR EACH ROW BEGIN\n    DECLARE umur INT;\n\n    IF NEW.tgl_lahir IS NOT NULL THEN\n        SET umur = TIMESTAMPDIFF(YEAR, NEW.tgl_lahir, CURDATE());\n    ELSE\n        SET umur = NULL; -- Jika tgl_lahir NULL, set umur menjadi NULL\n    END IF;\n\n    SET NEW.umur = umur; -- Mengatur nilai umur yang baru\nEND'
-sql_modes=524288 524288
-definers='root@%' 'root@%'
-client_cs_names='utf8mb4' 'utf8mb4'
-connection_cl_names='utf8mb4_uca1400_ai_ci' 'utf8mb4_uca1400_ai_ci'
-db_cl_names='utf8mb4_uca1400_ai_ci' 'utf8mb4_uca1400_ai_ci'
-created=1746173339550055 1746173339585232
+triggers='CREATE DEFINER=`root`@`%` TRIGGER `generate_random_password` BEFORE INSERT ON `users` FOR EACH ROW BEGIN\n    IF NEW.password IS NULL OR NEW.password = \'\' THEN\n        SET NEW.password = SUBSTRING(MD5(RAND()), 1, 8);\n    END IF;\nEND' 'CREATE DEFINER=`root`@`%` TRIGGER `update_umur_before_update` BEFORE UPDATE ON `users` FOR EACH ROW BEGIN\n    DECLARE umur INT;\n\n    IF NEW.tgl_lahir IS NOT NULL THEN\n        SET umur = TIMESTAMPDIFF(YEAR, NEW.tgl_lahir, CURDATE());\n    ELSE\n        SET umur = NULL; -- Jika tgl_lahir NULL, set umur menjadi NULL\n    END IF;\n\n    SET NEW.umur = umur; -- Mengatur nilai umur yang baru\nEND' 'CREATE DEFINER=`root`@`%` TRIGGER update_umur_users_on_update\nBEFORE UPDATE ON users\nFOR EACH ROW\nBEGIN\n  DECLARE total_bulan INT;\n  DECLARE tahun_sekarang INT;\n  DECLARE bulan_sekarang INT;\n  DECLARE hari_sekarang INT;\n  DECLARE tahun_lahir INT;\n  DECLARE bulan_lahir INT;\n  DECLARE hari_lahir INT;\n\n  -- Hitung umur hanya jika tanggal lahir baru tidak null\n  IF NEW.tgl_lahir IS NOT NULL THEN\n    SET tahun_sekarang = YEAR(CURDATE());\n    SET bulan_sekarang = MONTH(CURDATE());\n    SET hari_sekarang = DAY(CURDATE());\n\n    SET tahun_lahir = YEAR(NEW.tgl_lahir);\n    SET bulan_lahir = MONTH(NEW.tgl_lahir);\n    SET hari_lahir = DAY(NEW.tgl_lahir);\n\n    SET total_bulan = ((tahun_sekarang - tahun_lahir) * 12) + (bulan_sekarang - bulan_lahir);\n\n    IF hari_sekarang < hari_lahir THEN\n      SET total_bulan = total_bulan - 1;\n    END IF;\n\n    SET NEW.umur = ROUND(total_bulan / 12, 1);\n  END IF;\nEND'
+sql_modes=524288 524288 1411383296
+definers='root@%' 'root@%' 'root@%'
+client_cs_names='utf8mb4' 'utf8mb4' 'utf8mb4'
+connection_cl_names='utf8mb4_uca1400_ai_ci' 'utf8mb4_uca1400_ai_ci' 'utf8mb4_unicode_ci'
+db_cl_names='utf8mb4_uca1400_ai_ci' 'utf8mb4_uca1400_ai_ci' 'utf8mb4_uca1400_ai_ci'
+created=1746173339550055 1746173339585232 1746450980919560

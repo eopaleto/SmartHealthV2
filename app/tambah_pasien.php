@@ -48,16 +48,9 @@
     $jenis_kelamin = $_POST['jenis_kelamin'];
     $berat = $_POST['berat'];
     $tinggi = $_POST['tinggi'];
-    $alam = $_POST['alamat'];
-    
-    if (!empty($tgl)) {
-        $tanggal_lahir = new DateTime($tgl);
-        $today = new DateTime();
-        $umur = $today->diff($tanggal_lahir)->y;
-        $umur = NULL;
-    }
+    $alam = $_POST['alamat']; 
 
-    $query = "UPDATE users SET nik='$nik', alamat='$alam', tgl_lahir='$tgl', umur='$umur', jenis_kelamin='$jenis_kelamin', berat_badan='$berat', tinggi_badan='$tinggi' WHERE nama_pasien='$namamu'";
+    $query = "UPDATE users SET nik='$nik', alamat='$alam', tgl_lahir='$tgl', jenis_kelamin='$jenis_kelamin', berat_badan='$berat', tinggi_badan='$tinggi' WHERE nama_pasien='$namamu'";
     
     if (mysqli_query($conn, $query)) {
         echo '<script>

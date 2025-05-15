@@ -76,13 +76,13 @@
                               <td><?php echo $row_jantung['DetakJantung']; ?></td>
                               <td><?php echo $row_jantung['SaturasiOksigen']; ?></td>
                               <td class="<?php 
-                                  if ($row_jantung['KondisiJantung'] == 'SEHAT') {
+                                  if ($row_jantung['KondisiJantung'] == 'Normal') {
                                       echo 'text-success font-weight-bold';
-                                  } elseif ($row_jantung['KondisiJantung'] == 'TIDAK SEHAT') {
+                                  } elseif ($row_jantung['KondisiJantung'] == 'Tidak Normal') {
                                       echo 'text-danger font-weight-bold';
-                                  } elseif ($row_jantung['KondisiJantung'] == 'KURANG SEHAT') {
+                                  } elseif ($row_jantung['KondisiJantung'] == 'Kurang Normal') {
                                       echo 'text-warning font-weight-bold';
-                                  } elseif ($row_jantung['KondisiJantung'] == 'TIDAK DIKETAHUI') {
+                                  } elseif ($row_jantung['KondisiJantung'] == 'Tidak Diketahui') {
                                       echo 'text-grey font-weight-bold';
                                   } 
                               ?>">

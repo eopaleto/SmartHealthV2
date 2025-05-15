@@ -218,11 +218,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         filteredData.forEach(item => {
             if (item.KondisiJantung) {
-                if (item.KondisiJantung === 'NORMAL') {
+                if (item.KondisiJantung === 'Normal') {
                     normalCount++;
-                } else if (item.KondisiJantung === 'TIDAK NORMAL') {
+                } else if (item.KondisiJantung === 'Tidak Normal') {
                     tidakNormalCount++;
-                } else if (item.KondisiJantung === 'KURANG NORMAL') {
+                } else if (item.KondisiJantung === 'Kurang Normal') {
                     kurangNormalCount++;
                 }
             }

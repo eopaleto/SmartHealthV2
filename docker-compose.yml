@@ -55,7 +55,7 @@ services:
     image: cloudflare/cloudflared:latest
     container_name: cloudflare-tunnel
     command: tunnel --no-autoupdate run --token eyJhIjoiYTY3MDkxYmU0OTEyOWQxYWU4MzRhZGEyMWRlMzEyYmQiLCJ0IjoiNWQ0NzExN2ItZjQwMC00NDFjLTkwMTgtZGQxNDc2ZTQzNWI1IiwicyI6Ik56TmxZbU0yTWpRdFpUZzFNeTAwWmpJd0xUazVZalF0TVdNME1URXpORFkxWWpFeSJ9
-    networks:
+    networks: 
       - medis-network
 
   nginx:
@@ -84,6 +84,7 @@ services:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - medis-network
+    command: ['--event-scheduler=ON']
 
   phpmyadmin:
     image: phpmyadmin
